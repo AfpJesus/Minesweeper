@@ -24,7 +24,7 @@ def CheckCell(x, y):
                 print("About to check: " + str(i) + ", " + str(j))
                 if(((0<=i<20) and (0<=j<20) and rows[i][j].visible!=True)):
                     print(str(i) + ", " + str(j) + ":" + str(rows[i][j]))
-                    brows[x][y].config(text="   "+str(rows[x][y].value)+"   ")
+                    brows[x][y].config(text="   "+str(rows[x][y].value)+"  ")
                     rows[x][y].visible=True
                     CheckCell(i,j)
     else:
@@ -75,12 +75,12 @@ def CellLeftClicked(xy):
                     brows[r][c].config(text="   B   ", bg= "red")
                     rows[r][c].visible=True
                 else:
-                    brows[r][c].config(text="   " + str(rows[r][c].value) + "   ", bg = "white")
+                    brows[r][c].config(text="   " + str(rows[r][c].value) + "  ", bg = "white")
                     rows[r][c].visible=True
     elif rows[xy[0]][xy[1]].value == 0:
         CheckCell(xy[0], xy[1])
     else:
-        brows[xy[0]][xy[1]].config(text= "   " + str(rows[xy[0]][xy[1]].value) + "   ")
+        brows[xy[0]][xy[1]].config(text= "   " + str(rows[xy[0]][xy[1]].value) + "  ")
         rows[xy[0]][xy[1]].visible=True
         
 def CellRightClicked(xy):
@@ -112,9 +112,11 @@ def Window(userwidth):
     window = tkinter.Tk()
     window.geometry("800x775")
     window.maxsize(800, 775)
+    window.title("Minesweeper")
+    window.iconbitmap("./images/bomb.ico")
+    window.config(bg= "green")
     # Code to add widgets will go here...
     fbutton = tkinter.Button(window,text= "Flag", bg = "white", command=lambda :Fswitch(fbutton))
-
 
     for brow in range(userwidth):
         bcols = []
